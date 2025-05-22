@@ -51,7 +51,13 @@ export default function Navbar() {
         </nav>
 
         {/* CTA Button */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex gap-x-2">
+          <Link to="/dashboard">
+            <button className="flex items-center cursor-pointer gap-2 bg-[#0B0D11] border border-[#1f1f1f] px-4 py-2 rounded-md hover:bg-[#1c1c1c] transition">
+              <LogIn size={16} />
+              <span className="text-sm font-semibold">Dashboard</span>
+            </button>
+          </Link>
           <Link to="/auth/login">
             <button className="flex items-center cursor-pointer gap-2 bg-[#0B0D11] border border-[#1f1f1f] px-4 py-2 rounded-md hover:bg-[#1c1c1c] transition">
               <LogIn size={16} />
@@ -59,7 +65,7 @@ export default function Navbar() {
             </button>
           </Link>
           <Link to="/auth/signup">
-            <button className="flex items-center cursor-pointer ml-2 gap-2 bg-[#0B0D11] border border-[#1f1f1f] px-4 py-2 rounded-md hover:bg-[#1c1c1c] transition">
+            <button className="flex items-center cursor-pointer gap-2 bg-[#0B0D11] border border-[#1f1f1f] px-4 py-2 rounded-md hover:bg-[#1c1c1c] transition">
               <UserPlus size={16} />
               <span className="text-sm font-semibold">Sign Up</span>
             </button>
@@ -103,5 +109,5 @@ export default function Navbar() {
         </div>
       )}
     </header>
-  )
+  );
 }
