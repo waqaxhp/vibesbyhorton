@@ -1,6 +1,15 @@
-"use client";
 import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
+
+type Voice = SpeechSynthesisVoice;
+
+type Person = {
+  id: number;
+  name: string;
+  gender: string;
+  accent: string;
+  voice: Voice;
+};
 
 const fakeNames = [
   "Oliver Smith",
@@ -21,29 +30,26 @@ const fakeNames = [
 ];
 
 const TextToSpeech = () => {
-  const [text, setText] = useState("");
-  const [availableVoices, setAvailableVoices] = useState([]);
-  const [sampleData, setSampleData] = useState([]);
-  const voicesLoaded = useRef(false);
+  const [text, setText] = useState<string>("");
+  const [availableVoices, setAvailableVoices] = useState<Voice[]>([]);
+  const [sampleData, setSampleData] = useState<Person[]>([]);
+  const voicesLoaded = useRef<boolean>(false);
 
-  // Load voices once
+  // Load voices
   useEffect(() => {
     const loadVoices = () => {
-      const synth = window.speechSynthesis;
-      const voices = synth.getVoices();
-
+      const voices = window.speechSynthesis.getVoices();
       if (voices.length > 0) {
         voicesLoaded.current = true;
         setAvailableVoices(voices);
 
-        // Map names to voices
         const mapped = fakeNames.map((name, index) => {
           const assignedVoice = voices[index % voices.length];
           return {
             id: index,
             name,
             gender: index % 2 === 0 ? "Male" : "Female",
-            accent: assignedVoice?.lang || "Unknown",
+            accent: assignedVoice.lang || "Unknown",
             voice: assignedVoice,
           };
         });
@@ -56,16 +62,9 @@ const TextToSpeech = () => {
       window.speechSynthesis.onvoiceschanged = loadVoices;
       loadVoices();
     }
-
-    // Cleanup
-    return () => {
-      if (typeof window !== "undefined") {
-        window.speechSynthesis.onvoiceschanged = null;
-      }
-    };
   }, []);
 
-  const speak = (voice) => {
+  const speak = (voice: Voice) => {
     if (!voice || !voicesLoaded.current) {
       alert("Voice not available yet. Please wait a moment or reload.");
       return;
@@ -135,8 +134,8 @@ const TextToSpeech = () => {
                         </button>
                       </td>
                       <td className="p-2">{person.name}</td>
-                      <td className="p-2 capitalize">{person.gender}</td>
-                      <td className="p-2 capitalize">{person.accent}</td>
+                      <td className="p-2">{person.gender}</td>
+                      <td className="p-2">{person.accent}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -157,9 +156,3 @@ const TextToSpeech = () => {
 };
 
 export default TextToSpeech;
-
-// function TextToSpeech() {
-//   return <div>text-to-speech</div>;
-// }
-
-// export default TextToSpeech;
