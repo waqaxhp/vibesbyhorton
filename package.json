@@ -25,7 +25,6 @@
     "@tanstack/react-query": "^5.76.1",
     "aos": "^2.3.4",
     "autoprefixer": "^10.4.21",
-    "card-validator": "^10.0.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
