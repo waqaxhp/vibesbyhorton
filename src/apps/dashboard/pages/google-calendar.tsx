@@ -1,37 +1,37 @@
 // import React from 'rea
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 function GoogleCalendar() {
-  const [isConnecting, setIsConnecting] = useState(false)
-  const [email, setEmail] = useState('')
-  const [tempEmail, setTempEmail] = useState('')
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [email, setEmail] = useState("");
+  const [tempEmail, setTempEmail] = useState("");
 
   const handleConnectClick = () => {
     if (email) {
       // Disconnect
-      setEmail('')
-      setTempEmail('')
-      setIsConnecting(false)
-      localStorage.removeItem('connectedEmail')
+      setEmail("");
+      setTempEmail("");
+      setIsConnecting(false);
+      localStorage.removeItem("connectedEmail");
     } else if (isConnecting) {
       // Cancel connect
-      setIsConnecting(false)
-      setTempEmail('')
+      setIsConnecting(false);
+      setTempEmail("");
     } else {
       // Start connecting
-      setIsConnecting(true)
-      setTempEmail('')
+      setIsConnecting(true);
+      setTempEmail("");
     }
-  }
+  };
 
   const handleConnectEmail = () => {
-    if (tempEmail.trim() === '') return
-    const trimmed = tempEmail.trim()
-    setEmail(trimmed)
-    localStorage.setItem('connectedEmail', trimmed)
-    setIsConnecting(false)
-  }
+    if (tempEmail.trim() === "") return;
+    const trimmed = tempEmail.trim();
+    setEmail(trimmed);
+    localStorage.setItem("connectedEmail", trimmed);
+    setIsConnecting(false);
+  };
 
   return (
     <div>
@@ -83,16 +83,16 @@ function GoogleCalendar() {
 
             <Button
               onClick={handleConnectClick}
-              variant={email ? 'destructive' : undefined}
-              className={email ? '' : 'bg-[#0B0D11] text-white'}
+              variant={email ? "destructive" : undefined}
+              className={email ? "" : "bg-[#0B0D11] text-white"}
             >
-              {email ? 'Disconnect' : isConnecting ? 'Cancel' : 'Connect'}
+              {email ? "Disconnect" : isConnecting ? "Cancel" : "Connect"}
             </Button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default GoogleCalendar
+export default GoogleCalendar;
