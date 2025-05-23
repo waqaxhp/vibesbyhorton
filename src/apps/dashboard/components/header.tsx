@@ -18,6 +18,7 @@ import {
   Logs,
   Speaker,
   History,
+  Text,
 } from "lucide-react";
 
 import { useState, useRef, useEffect } from "react";
@@ -51,6 +52,11 @@ export default function Header() {
       label: "Live Call",
       icon: <PhoneIcon size={20} />,
       to: "/dashboard/live-call",
+    },
+    {
+      label: "Live Chats",
+      icon: <Text size={20} />,
+      to: "/dashboard/live-chat",
     },
     {
       label: "Voice Chats",

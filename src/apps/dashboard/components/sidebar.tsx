@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from "react";
 import {
   Mic,
   Home as HomeIcon,
@@ -16,47 +16,53 @@ import {
   Calendar,
   History,
   CreditCard,
-} from 'lucide-react'
-import { Link, useLocation } from 'react-router-dom'
+  Text,
+} from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
-  const location = useLocation()
-  const [isIntegrationsOpen, setIsIntegrationsOpen] = useState(false)
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false)
+  const location = useLocation();
+  const [isIntegrationsOpen, setIsIntegrationsOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   const navItems = [
-    { label: 'Dashboard', icon: <HomeIcon size={20} />, to: '/dashboard' },
+    { label: "Dashboard", icon: <HomeIcon size={20} />, to: "/dashboard" },
     {
-      label: 'Calendar',
+      label: "Calendar",
       icon: <Calendar size={20} />,
-      to: '/dashboard/calendar',
+      to: "/dashboard/calendar",
     },
     {
-      label: 'Live Call',
+      label: "Live Call",
       icon: <PhoneIcon size={20} />,
-      to: '/dashboard/live-call',
+      to: "/dashboard/live-call",
     },
     {
-      label: 'Voice Chats',
+      label: "Voice Chats",
       icon: <Mic size={20} />,
-      to: '/dashboard/voice-bot-chat',
+      to: "/dashboard/voice-bot-chat",
     },
     {
-      label: 'Call Logs',
+      label: "Live Chats",
+      icon: <Text size={20} />,
+      to: "/dashboard/live-chat",
+    },
+    {
+      label: "Call Logs",
       icon: <Logs size={20} />,
-      to: '/dashboard/call-logs',
+      to: "/dashboard/call-logs",
     },
     {
-      label: 'Voices',
+      label: "Voices",
       icon: <Mic size={20} />,
-      to: '/dashboard/voices',
+      to: "/dashboard/voices",
     },
     {
-      label: 'Text to Speech',
+      label: "Text to Speech",
       icon: <Speaker size={20} />,
-      to: '/dashboard/text-to-speech',
+      to: "/dashboard/text-to-speech",
     },
-  ]
+  ];
 
   return (
     <aside className="w-64 bg-[#1a1d22] text-white h-screen p-4 flex flex-col">
@@ -67,7 +73,7 @@ export default function Sidebar() {
             key={label}
             to={to}
             className={`flex items-center space-x-2 hover:text-blue-400 ${
-              location.pathname === to ? 'text-blue-400 font-semibold' : ''
+              location.pathname === to ? "text-blue-400 font-semibold" : ""
             }`}
           >
             {icon}
@@ -94,9 +100,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/integration/google-calendar"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/integration/google-calendar'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/integration/google-calendar"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <CalendarSync size={18} />
@@ -105,9 +111,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/integration/eleven-labs"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/integration/eleven-labs'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/integration/eleven-labs"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <Pause size={18} />
@@ -136,9 +142,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/settings/profile"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/settings/profile'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/settings/profile"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <User size={18} />
@@ -147,9 +153,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/settings/users"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/settings/users'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/settings/users"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <Users size={18} />
@@ -158,9 +164,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/settings/history"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/settings/history'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/settings/history"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <History size={18} />
@@ -169,9 +175,9 @@ export default function Sidebar() {
               <Link
                 to="/dashboard/settings/billings"
                 className={`flex items-center space-x-2 hover:text-blue-400 ${
-                  location.pathname === '/dashboard/settings/billings'
-                    ? 'text-blue-400 font-semibold'
-                    : ''
+                  location.pathname === "/dashboard/settings/billings"
+                    ? "text-blue-400 font-semibold"
+                    : ""
                 }`}
               >
                 <CreditCard size={18} />
@@ -182,5 +188,5 @@ export default function Sidebar() {
         </div>
       </nav>
     </aside>
-  )
+  );
 }
