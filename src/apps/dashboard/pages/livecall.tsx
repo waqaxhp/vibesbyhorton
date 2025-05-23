@@ -16,6 +16,7 @@ import {
   Trash2,
 } from "lucide-react";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 type CallStatus =
   | "idle"
@@ -148,6 +149,7 @@ const AiCallInterface: React.FC = () => {
     <div className="w-full h-full  mx-auto p-4 rounded-2xl shadow-xl bg-gray-700 dark:bg-zinc-900 space-y-6">
       <div className="text-center">
         <h2 className="text-2xl font-semibold">AI Voice Call </h2>
+
         <div className="flex items-center justify-center gap-3 text-sm text-muted-foreground mt-2">
           <Bot
             className={clsx(
@@ -222,6 +224,19 @@ const AiCallInterface: React.FC = () => {
       {/* Call Logs */}
       <div className="border-t pt-4">
         <h3 className="text-xl font-semibold mb-3">Call History</h3>
+        <p className="text-sm text-gray-400">
+          By default, your AI call history is retained for{" "}
+          <Link
+            to="/dashboard/settings/history"
+            className="text-blue-400 hover:underline font-medium inline-flex items-center space-x-1"
+          >
+            <span>30 days</span>
+            <span>→</span>
+          </Link>
+          . You can change this retention period anytime by clicking the link
+          above. All call logs are automatically deleted after their retention
+          period.
+        </p>
         {callLogs.length === 0 ? (
           <p className="text-muted-foreground text-sm">No call history yet.</p>
         ) : (

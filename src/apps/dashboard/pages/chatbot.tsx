@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 type Message = {
   id: number;
@@ -83,7 +84,19 @@ const ChatBot: React.FC = () => {
 
   return (
     <div className="bg-[#0B0D11] h-full  text-white p-4 md:p-6 mx-auto w-full flex flex-col">
-      <div className="text-xl font-bold mb-4">🤖 ChatBot Assistant</div>
+      <div className="text-xl font-bold">🤖 ChatBot Assistant</div>
+      <p className=" p-3 text-sm text-gray-400 ">
+        By default, your AI Chat history is retained for{" "}
+        <Link
+          to="/dashboard/settings/history"
+          className="text-blue-400 hover:underline font-medium inline-flex items-center space-x-1"
+        >
+          <span>30 days</span>
+          <span>→</span>
+        </Link>
+        . You can adjust this retention period at any time by clicking the link
+        above. All Chat logs are automatically deleted after their set duration.
+      </p>
       <div
         className="flex-1 overflow-y-auto border border-gray-700 rounded p-4 space-y-4 bg-gray-900"
         role="log"

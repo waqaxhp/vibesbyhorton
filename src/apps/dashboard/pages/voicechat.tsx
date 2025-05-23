@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Mic, UserCircle, Bot } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const VoiceBotChat: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false);
@@ -218,8 +219,23 @@ const VoiceBotChat: React.FC = () => {
 
   return (
     <div className="flex flex-col h-full min-h-full bg-gray-950 text-white">
-      <div className="p-3 border-b border-gray-800 flex justify-between items-center">
+      <div className="p-3 flex justify-between items-center">
         <h1 className="text-base font-semibold">🎤 VoiceBot Chat</h1>
+      </div>
+      <div className="p-3 border-b border-gray-800">
+        <p className="text-sm text-gray-400 ">
+          By default, your AI voice call history is retained for{" "}
+          <Link
+            to="/dashboard/settings/history"
+            className="text-blue-400 hover:underline font-medium inline-flex items-center space-x-1"
+          >
+            <span>30 days</span>
+            <span>→</span>
+          </Link>
+          . You can adjust this retention period at any time by clicking the
+          link above. All voice call logs are automatically deleted after their
+          set duration.
+        </p>
       </div>
 
       <div className="flex-1 overflow-y-auto p-3 space-y-4">
